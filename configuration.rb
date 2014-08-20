@@ -25,6 +25,11 @@ class MongoAccessor
 		"[{condition :'success'}]"
 	end	
 
+	def deleteById(database,collectionName,id)
+		db = @client.db(database)
+		db[collectionName].remove('_id' => BSON::ObjectId.from_string(id))
+		"[{condition :'success'}]"
+	end
 
 end 	
 
