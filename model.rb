@@ -2,23 +2,26 @@ require './configuration.rb'
 
 
 def list(db,collection)
-	mongoList db,collection
-	print "This is #{db} and this is #{collection}"
+	cursor = mongoList db,collection
+	
+
+	#print "This is #{db} and this is #{collection}"
 
 end 
 
-def create(params)
+def create(db,collection)
 	puts params.inspect
 end	
 
-def read(params)
+def read(db,collection,id)
+	findById db,collection,id 
 	puts params.inspect
 end
 
-def update(params)
-	puts params.inspect
+def update(db,collection,id)
+	
 end	
 
-def delete(params)
-	puts params.inspect
+def delete(db,collection,id)
+	
 end 

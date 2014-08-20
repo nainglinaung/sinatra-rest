@@ -17,33 +17,35 @@ get '/:db/:collection/' do
   headers \
     "Content-Type" => "application/json"
   body list params[:captures][0],params[:captures][1] 
-
+  
+  
 end
 
 
-post '/:db/:collection' do
+post '/:db/:collection'  do
 	headers \
 	 "Content-Type" => "application/json"
-	
-	body create params 
+	create params 
+	  "Hello World"
 end 
 
 get '/:db/:collection/:id' do 
 	headers \
 	 "Content-Type" => "application/json"
-	body read params 
+	
+	body read params[:captures][0],params[:captures][1],params[:captures][2] 
 end 
 
 put '/:db/:collection/:id' do
 	headers \
 	 "Content-Type" => "application/json"
-	body update params
+	body update params[:captures][0],params[:captures][1],params[:captures][2]
 end 
 
 delete '/:db/:collection/:id' do
 	headers \
 	 "Content-Type" => "application/json"
-	body delete params 
+	body delete params [:captures][0],params[:captures][1],params[:captures][2]
 end 
 
 

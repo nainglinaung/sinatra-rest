@@ -1,3 +1,5 @@
+require 'json'
+
 
 $config = {hostname:'127.0.0.1',port:27017}
 
@@ -7,12 +9,17 @@ $config = {hostname:'127.0.0.1',port:27017}
 
 def mongoList(database,collectionName)
 
-
  client =  Mongo::MongoClient.new($config[:hostname],$config[:port])
  db = client.db(database)
  collection = db[collectionName]
+ cursor = collection.find() 
+ cursor.to_a.to_json
 
- data = collection.find()
- print data.inspect
-   
 end
+
+
+def findById() 
+
+end 
+
+
