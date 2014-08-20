@@ -6,7 +6,7 @@ def list(db,collection)
 end 
 
 def create(db,collection)
-	params.inspect
+	mongoCreate db,collection
 end	
 
 def read(db,collection,id)
@@ -14,9 +14,9 @@ def read(db,collection,id)
 end
 
 def update(db,collection,id)
-	
+	mongoUpdateById db,collection,id
 end	
 
 def delete(db,collection,id)
-	
+	mongoDeleteById db,collection,id
 end 

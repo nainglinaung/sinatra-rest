@@ -16,13 +16,14 @@ $app->delete( '/:db/:collection/:id',  '_delete');
 get '/:db/:collection/' do 
   headers \
     "Content-Type" => "application/json"
-  body list params[:captures][0],params[:captures][1] 
+  get = params[:captures]  
+  body list get[0],get[1]
   
   
 end
 
 
-post '/:db/:collection'  do
+post '/:db/:collection/'  do
 	headers \
 	 "Content-Type" => "application/json"
 	create params 
@@ -32,19 +33,23 @@ end
 get '/:db/:collection/:id/' do 
 	headers \
 	 "Content-Type" => "application/json"
-	body read params[:captures][0],params[:captures][1],params[:captures][2] 
+	get = params[:captures]
+	body read get[0],get[1],get[2] 
 end 
 
-put '/:db/:collection/:id' do
+put '/:db/:collection/:id/' do
 	headers \
 	 "Content-Type" => "application/json"
-	body update params[:captures][0],params[:captures][1],params[:captures][2]
+	get = params[:captures] 
+	body update get[0],get[1],get[2]
+	
 end 
 
-delete '/:db/:collection/:id' do
+delete '/:db/:collection/:id/' do
 	headers \
 	 "Content-Type" => "application/json"
-	body delete params [:captures][0],params[:captures][1],params[:captures][2]
+	get = params[:captures]  
+	body delete get[0],get[1],get[2]
 end 
 
 

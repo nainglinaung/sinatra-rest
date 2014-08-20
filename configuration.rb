@@ -27,4 +27,12 @@ def mongoFindById(database,collectionName,id)
   
 end 
 
+def mongoUpdateById(database,collection,id)
+ 
+ client =  Mongo::MongoClient.new($config[:hostname],$config[:port])
+ db = client.db(database)
+ collection = db[collectionName]
+ collection.update()
+ "aaaa"
+end	
 
