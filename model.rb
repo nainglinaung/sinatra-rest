@@ -6,12 +6,11 @@ def list(db,collection)
 end 
 
 def create(db,collection)
-	puts params.inspect
+	params.inspect
 end	
 
 def read(db,collection,id)
-	findById db,collection,id 
-	puts params.inspect
+	mongoFindById db,collection,id 
 end
 
 def update(db,collection,id)

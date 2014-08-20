@@ -1,6 +1,6 @@
 # Sinatra Mongo REST Server
 
-Based on [Slim Mongo REST Server]('https://github.com/joevallender/slim-php-mongo-rest'), I decided to build in other as analogy in order to learn other programming languages as well. The project itself in process, lack of many features. feel free to fork and send pull requests. 
+Based on [Slim Mongo REST Server](https://github.com/joevallender/slim-php-mongo-rest), I decided to build in other as analogy in order to learn other programming languages as well. The project itself in process, lack of many features. feel free to fork and send pull requests. 
 
 
 ### Requirement 

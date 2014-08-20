@@ -29,10 +29,9 @@ post '/:db/:collection'  do
 	  "Hello World"
 end 
 
-get '/:db/:collection/:id' do 
+get '/:db/:collection/:id/' do 
 	headers \
 	 "Content-Type" => "application/json"
-	
 	body read params[:captures][0],params[:captures][1],params[:captures][2] 
 end 
 

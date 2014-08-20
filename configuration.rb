@@ -12,13 +12,19 @@ def mongoList(database,collectionName)
  client =  Mongo::MongoClient.new($config[:hostname],$config[:port])
  db = client.db(database)
  collection = db[collectionName]
- cursor = collection.find.to_a.to_json
+
+ collection.find.to_a.to_json
 
 end
 
 
-def findById() 
-
+def mongoFindById(database,collectionName,id) 
+ 
+ client =  Mongo::MongoClient.new($config[:hostname],$config[:port])
+ db = client.db(database)
+ collection = db[collectionName]
+ collection.find('_id' => BSON::ObjectId.from_string(id)).to_a.to_json
+  
 end 
 
 
