@@ -1,38 +1,34 @@
 require 'json'
 
 
-$config = {hostname:'127.0.0.1',port:27017}
+class MongoAccessor 
+
+	def initialize(hostname,port)
+		@client =  Mongo::MongoClient.new(hostname,port)
+	end
+	
+	def list(database,collectionName)
+		db = @client.db(database)
+		db[collectionName].find.to_a.to_json
+	end
+
+
+	def findById(database,collectionName,id) 
+	 	db = @client.db(database)
+		db[collectionName].find('_id' => BSON::ObjectId.from_string(id)).to_a.to_json
+	end 
+
+
+	def updateById(database,collectionName,id)
+	 	db = @client.db(database)
+		db[collectionName].update({'_id' => BSON::ObjectId.from_string(id)},{"$set" => {"welcome" => "Hello There"}})
+		"[{condition :'success'}]"
+	end	
+
+
+end 	
 
 
 
 
-
-def mongoList(database,collectionName)
-
- client =  Mongo::MongoClient.new($config[:hostname],$config[:port])
- db = client.db(database)
- collection = db[collectionName]
-
- collection.find.to_a.to_json
-
-end
-
-
-def mongoFindById(database,collectionName,id) 
- 
- client =  Mongo::MongoClient.new($config[:hostname],$config[:port])
- db = client.db(database)
- collection = db[collectionName]
- collection.find('_id' => BSON::ObjectId.from_string(id)).to_a.to_json
-  
-end 
-
-def mongoUpdateById(database,collection,id)
- 
- client =  Mongo::MongoClient.new($config[:hostname],$config[:port])
- db = client.db(database)
- collection = db[collectionName]
- collection.update()
- "aaaa"
-end	
 

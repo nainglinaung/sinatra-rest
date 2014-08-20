@@ -22,7 +22,6 @@ get '/:db/:collection/' do
   
 end
 
-
 post '/:db/:collection/'  do
 	headers \
 	 "Content-Type" => "application/json"
