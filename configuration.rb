@@ -12,8 +12,7 @@ def mongoList(database,collectionName)
  client =  Mongo::MongoClient.new($config[:hostname],$config[:port])
  db = client.db(database)
  collection = db[collectionName]
- cursor = collection.find() 
- cursor.to_a.to_json
+ cursor = collection.find.to_a.to_json
 
 end
 

@@ -2,11 +2,7 @@ require './configuration.rb'
 
 
 def list(db,collection)
-	cursor = mongoList db,collection
-	
-
-	#print "This is #{db} and this is #{collection}"
-
+	mongoList db,collection
 end 
 
 def create(db,collection)
