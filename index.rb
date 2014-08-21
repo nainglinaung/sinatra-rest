@@ -5,6 +5,7 @@ require './model.rb'
 get '/:db/:collection/' do
   headers \
   'Content-Type' => 'application/json'
+  # Can use content_type 'application/json' too.
   get = params[:captures]
   body list get[0], get[1]
 end
