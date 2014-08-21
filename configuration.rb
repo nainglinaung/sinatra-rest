@@ -2,30 +2,29 @@ require 'json'
 
 class MongoAccessor
 
-  def initialize(hostname,port)
-    @client =  Mongo::MongoClient.new(hostname,port)
+  def initialize(hostname, port)
+    @client =  Mongo::MongoClient.new(hostname, port)
   end
 
-  def list(database,collectionName)
+  def list(database, collection_name)
     db = @client.db(database)
-    db[collectionName].find.to_a.to_json
+    db[collection_name].find.to_a.to_json
   end
 
-  def findById(database,collectionName,id) 
+  def find_by_id(database, collection_name,id) 
     db = @client.db(database)
-    db[collectionName].find('_id' => BSON::ObjectId.from_string(id)).to_a.to_json
+    db[collection_name].find('_id' => BSON::ObjectId.from_string(id)).to_a.to_json
   end 
 
-  def updateById(database,collectionName,id)
+  def update_by_id(database, collection_name, id)
     db = @client.db(database)
-    db[collectionName].update({'_id' => BSON::ObjectId.from_string(id)},{"$set" => {"welcome" => "Hello There"}})
-    "[{condition :'success'}]"
-  end	
-
-  def deleteById(database,collectionName,id)
-    db = @client.db(database)
-    db[collectionName].remove('_id' => BSON::ObjectId.from_string(id))
+    db[collection_name].update({'_id' => BSON::ObjectId.from_string(id)}, {"$set" => {"welcome" => "Hello There" } })
     "[{condition :'success'}]"
   end
 
-end 	
+  def delete_by_id(database, collection_name, id)
+    db = @client.db(database)
+    db[collection_name].remove('_id' => BSON::ObjectId.from_string(id))
+    "[{condition :'success'}]"
+  end
+end
